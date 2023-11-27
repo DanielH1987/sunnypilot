@@ -286,7 +286,7 @@ class CarInterface(CarInterfaceBase):
       ret.steerRatio = 16.71
       ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 4096], [0, 4096]]  # TODO: determine if there is a dead zone at the top end
       tire_stiffness_factor = 0.82
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.18]] # TODO: can probably use some tuning
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.8], [0.2]] # TODO: can probably use some tuning
 
     elif candidate == CAR.CLARITY:
       ret.safetyConfigs[0].safetyParam |= Panda.FLAG_HONDA_CLARITY
@@ -336,7 +336,7 @@ class CarInterface(CarInterfaceBase):
     ret.tireStiffnessFront, ret.tireStiffnessRear = scale_tire_stiffness(ret.mass, ret.wheelbase, ret.centerToFront,
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
-    ret.steerActuatorDelay = 0.1
+    ret.steerActuatorDelay = 0.5
     ret.steerLimitTimer = 0.8
 
     return ret
